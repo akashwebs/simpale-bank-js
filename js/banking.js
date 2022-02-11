@@ -56,11 +56,15 @@ document.getElementById('withdraw-button').addEventListener('click', function() 
     // get withdaraw input 
     const newWithdrawAmount = getInputData('withdraw-input');
     const preveousDisplayAmount = getDisplayPreveousTotal();
-    if (newWithdrawAmount < preveousDisplayAmount) {
+    if (newWithdrawAmount > preveousDisplayAmount) {
+        document.getElementById('balance-low').innerText = 'insufficent balance';
+    }
+    if (newWithdrawAmount < preveousDisplayAmount && newWithdrawAmount > 0) {
         displayAmount('total-withdraw', newWithdrawAmount);
         // blance minus from withdarw
         displayBalnce(newWithdrawAmount, false);
 
     }
+
 
 })
