@@ -1,0 +1,47 @@
+// depsoit area 
+const depostiButton = document.getElementById('deposit-button');
+depostiButton.addEventListener('click', function() {
+
+    const depositInput = document.getElementById('deposit-input');
+    const totalDeposit = document.getElementById('total-deposit');
+
+    const preveousTotalDeopsit = parseFloat(totalDeposit.innerText);
+    // get deposit value form input field
+    const newDepostiInput = parseFloat(depositInput.value);
+    // preveous display value of deposit
+    const newTotalDeposit = preveousTotalDeopsit + newDepostiInput;
+
+    totalDeposit.innerText = newTotalDeposit;
+    // balance add from deposit
+    const preveousTotalBlanceText = document.getElementById('total-balance');
+    const preveousTotalBlance = parseFloat(preveousTotalBlanceText.innerText);
+    const totalBalanceUpdate = preveousTotalBlance + newDepostiInput;
+    preveousTotalBlanceText.innerText = totalBalanceUpdate;
+
+    //deposit input empty afer input 
+    depositInput.value = '';
+});
+
+// handle withdraw 
+
+document.getElementById('withdraw-button').addEventListener('click', function() {
+    // get input value of withdraw
+    const withdrawInput = document.getElementById('withdraw-input');
+    const newWithdrawInput = parseFloat(withdrawInput.value);
+    // withdraw display output
+    const preveousWithdraw = document.getElementById('total-withdraw');
+    const totalPrveousWithdraw = parseFloat(preveousWithdraw.innerText);
+
+    const totalWithdraw = newWithdrawInput + totalPrveousWithdraw;
+    preveousWithdraw.innerText = totalWithdraw;
+
+    // blance withdraw 
+    const totalBalance = document.getElementById('total-balance');
+    const preveousTotalBalnace = parseFloat(totalBalance.innerText);
+    const currentTotalBalance = preveousTotalBalnace - newWithdrawInput;
+    totalBalance.innerText = currentTotalBalance;
+
+    // empty withdraw input after input
+    withdrawInput.value = '';
+
+});
