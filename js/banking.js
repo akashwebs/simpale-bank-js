@@ -34,6 +34,7 @@ function displayBalnce(amount, isTrue) {
         totalBalance.innerText = (oldBalanceAmount - amount).toFixed(2);
 
     }
+
 }
 
 // deposti handle
@@ -55,16 +56,17 @@ document.getElementById('withdraw-button').addEventListener('click', function() 
 
     // get withdaraw input 
     const newWithdrawAmount = getInputData('withdraw-input');
+    const messege = document.getElementById('balance-low')
     const preveousDisplayAmount = getDisplayPreveousTotal();
     if (newWithdrawAmount > preveousDisplayAmount) {
 
         alert('insufficent balance');
-        const messege = document.getElementById('balance-low')
         const preveousBalance = getDisplayPreveousTotal();
-        messege.innerText = ' insufficent balance!! your Available balance: ' + preveousBalance;
+        messege.innerText = ' insufficent balance!! you can withdraw only: ' + (preveousBalance - 1) + ' tk';
         messege.style.color = "red";
     }
     if (newWithdrawAmount < preveousDisplayAmount && newWithdrawAmount > 0) {
+        messege.innerText = '';
         displayAmount('total-withdraw', newWithdrawAmount);
         // blance minus from withdarw
         displayBalnce(newWithdrawAmount, false);
